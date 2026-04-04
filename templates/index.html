@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediksi Kelulusan SMP</title>
+
+    <!-- Hubungkan CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+    <h2>📊 Prediksi Kelulusan SMP</h2>
+
+    <form method="POST">
+        <input 
+            type="number" 
+            name="tahun" 
+            placeholder="Masukkan Tahun (contoh: 2025)" 
+            required
+        >
+        <br>
+        <button type="submit">Prediksi</button>
+    </form>
+
+    {% if prediksi %}
+    <div class="result">
+        <h3>Hasil Prediksi Tahun {{ tahun }}</h3>
+        <p>{{ prediksi|int }} siswa lulus</p>
+
+        <img src="{{ url_for('static', filename='plot.png') }}" alt="Grafik">
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
